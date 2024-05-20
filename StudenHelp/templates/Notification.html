@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        .profile {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            text-align: center;
+            width: 600px;
+            margin: 0 auto;
+            margin-top: 30px;
+        }
+        .profile img {
+            border-radius: 50%;
+            margin-right: 100px;
+            width: 220px;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            height: 100vh;
+            margin: 0;
+        }
+        .profile p {
+            font-size: 20px;
+            font-family: sans-serif;
+        }
+        input[type="file"] {
+            display: none;
+        }
+        .custom-file-upload {
+            border: 1px solid #ccc;
+            display: inline-block;
+            padding: 6px 12px;
+            cursor: pointer;
+        }
+        button {
+            margin-left: 80px;
+            width: 120px;
+            height: 40px;
+            margin-right: 16px;
+        }
+        .element {
+            display: flex;
+        }
+        .objet1 {
+            display: flex;
+        }
+        .nom {
+            width: 200px;
+            flex-direction: column;
+            display: flex;
+            text-align: left;
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            width: 700px;
+            margin: 0 auto;
+            margin-right: 200px;
+            margin-bottom: 50px;
+        }
+        .icons {
+            margin-top: 10px;
+            margin-right: 20px;
+            display: flex;
+            flex-direction: row;
+            gap: 30px;
+        }
+        .card-body img {
+            margin-top: 20px;
+            width: 450px;
+            height: 350px;
+        }
+        .objet1 svg {
+            margin-left: 260px;
+        }
+        svg:hover {
+            cursor: pointer;
+        }
+        .sup {
+            color: red;
+            text-decoration: none;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 18px;
+        }
+        .mod {
+            text-decoration: none;
+            color: rgb(73, 67, 67);
+            font-size: 18px;
+        }
+        .but {
+            display: flex;
+            flex-direction: column;
+        }
+        .new-post {
+            display: flex;
+            flex-direction: column;
+            width: 700px;
+            margin: 0 auto;
+            margin-right: 200px;
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+<body>
+    {% extends 'base.html' %}
+    {% load static %}
+    {% block content %}
+    <div class="profile">
+        <img src="../../media/pdi.webp" alt="Profile Image">
+        <input type="file" id="profile-image">
+        {% if user.is_authenticated %}
+        <div class="element">
+            <div class="nom">
+                <p>{{ user }}</p>
+                <p>Nom et Prénom</p>
+            </div>
+            <button type="button" class="btn btn-secondary">Edit Profile</button>
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-gear" viewBox="0 0 16 16">
+                <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0"/>
+                <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z"/>
+            </svg>
+        </div>
+    </div>
+    <hr>
+    <div class="content">
+        {% for post in posts %}
+        {% if post.uc == request.user %}
+        {% for comment in post.comments.all %}
+        {% if comment.comment %}
+        
+        <div class="card-wrapper new-post">
+            <div class="objet1">
+                <h5 class="card-title">{{ post.uc }}</h5>
+                <p class="card-text">{{ post.date }} <p>{{ post.type }}</p></p>
+                <svg id="options-icon" aria-label="Plus d'options" class="x1lliihq x1n2onr6 x5n08af" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24">
+                    <title>Plus d'options</title>
+                    <circle cx="12" cy="12" r="1.5"></circle>
+                    <circle cx="6" cy="12" r="1.5"></circle>
+                    <circle cx="18" cy="12" r="1.5"></circle>
+                </svg>
+            </div>
+            <div class="card-body">
+                <p class="card-text">{{ post.content }}</p>
+                {% if post.image %}
+                <img src="{{ post.image.url }}" alt="Post image">
+                {% endif %}
+                <div class="icons">
+                    <svg id="like-icon" aria-label="Like" class="_8-yf5" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24">
+                        <path d="M16.792 2c-1.928 0-3.738 1.064-4.792 2.728C10.946 3.064 9.136 2 7.208 2 4.29 2 2 4.29 2 7.208c0 4.096 3.547 6.64 8.59 11.663L12 21.35l1.41-1.48C18.453 13.848 22 11.304 22 7.208 22 4.29 19.71 2 16.792 2zM12.1 19.434l-.1.105-.11-.115C7.236 14.71 4 12.312 4 7.207 4 5.453 5.453 4 7.208 4c1.567 0 3.14.996 3.76 2.35h2.064c.62-1.354 2.193-2.35 3.76-2.35C18.547 4 20 5.453 20 7.208c0 5.106-3.236 7.504-7.9 12.226z"></path>
+                    </svg>
+                    <svg id="comment-icon" aria-label="Commenter" class="_8-yf5" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24">
+                        <path d="M20.98 18.576c-.26-.305-.56-.687-.845-1.075-.282-.383-.59-.798-.856-1.19-.065-.1-.13-.2-.195-.3-.334-.51-.675-1.03-1.034-1.57C18.056 13.676 18 12.824 18 12V8c0-3.728-3.208-7-8-7S2 4.272 2 8v4c0 3.728 3.208 7 8 7 1.137 0 2.262-.168 3.337-.498.356-.114.73-.24 1.08-.366.26.423.56.86.856 1.272.278.395.564.794.818 1.12a.5.5 0 0 0 .765.042c.288-.314.514-.68.752-1.037.03-.046.06-.092.089-.138.16-.251.322-.507.481-.768a.5.5 0 0 0-.061-.611zM8 18.5c-4.494 0-7.5-3.125-7.5-6.5S3.506 5.5 8 5.5s7.5 3.125 7.5 6.5S12.494 18.5 8 18.5z"></path>
+                    </svg>
+                    <svg id="share-icon" aria-label="Partager la publication" class="_8-yf5" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24">
+                        <line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="22" x2="9.218" y1="3" y2="10.083"></line>
+                        <polygon fill="none" points="11.698 20.334 23 3.729 9.197 10.083 7.302 20.334 11.698 20.334" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></polygon>
+                    </svg>
+                </div>
+            </div>
+            <div class="comments">
+                
+                <div class="comment">
+                    <strong>{{ comment.users }} commented on your poste </strong>: {{ comment.comment }}
+                    
+                </div>
+                {% endif %}
+                {% if comment.like %}
+
+
+
+
+                
+        
+        <div class="card-wrapper new-post">
+            <div class="objet1">
+                <h5 class="card-title">{{ post.uc }}</h5>
+                <p class="card-text">{{ post.date }} <p>{{ post.type }}</p></p>
+                <svg id="options-icon" aria-label="Plus d'options" class="x1lliihq x1n2onr6 x5n08af" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24">
+                    <title>Plus d'options</title>
+                    <circle cx="12" cy="12" r="1.5"></circle>
+                    <circle cx="6" cy="12" r="1.5"></circle>
+                    <circle cx="18" cy="12" r="1.5"></circle>
+                </svg>
+            </div>
+            <div class="card-body">
+                <p class="card-text">{{ post.content }}</p>
+                {% if post.image %}
+                <img src="{{ post.image.url }}" alt="Post image">
+                {% endif %}
+                <div class="icons">
+                    <svg id="like-icon" aria-label="Like" class="_8-yf5" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24">
+                        <path d="M16.792 2c-1.928 0-3.738 1.064-4.792 2.728C10.946 3.064 9.136 2 7.208 2 4.29 2 2 4.29 2 7.208c0 4.096 3.547 6.64 8.59 11.663L12 21.35l1.41-1.48C18.453 13.848 22 11.304 22 7.208 22 4.29 19.71 2 16.792 2zM12.1 19.434l-.1.105-.11-.115C7.236 14.71 4 12.312 4 7.207 4 5.453 5.453 4 7.208 4c1.567 0 3.14.996 3.76 2.35h2.064c.62-1.354 2.193-2.35 3.76-2.35C18.547 4 20 5.453 20 7.208c0 5.106-3.236 7.504-7.9 12.226z"></path>
+                    </svg>
+                    <svg id="comment-icon" aria-label="Commenter" class="_8-yf5" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24">
+                        <path d="M20.98 18.576c-.26-.305-.56-.687-.845-1.075-.282-.383-.59-.798-.856-1.19-.065-.1-.13-.2-.195-.3-.334-.51-.675-1.03-1.034-1.57C18.056 13.676 18 12.824 18 12V8c0-3.728-3.208-7-8-7S2 4.272 2 8v4c0 3.728 3.208 7 8 7 1.137 0 2.262-.168 3.337-.498.356-.114.73-.24 1.08-.366.26.423.56.86.856 1.272.278.395.564.794.818 1.12a.5.5 0 0 0 .765.042c.288-.314.514-.68.752-1.037.03-.046.06-.092.089-.138.16-.251.322-.507.481-.768a.5.5 0 0 0-.061-.611zM8 18.5c-4.494 0-7.5-3.125-7.5-6.5S3.506 5.5 8 5.5s7.5 3.125 7.5 6.5S12.494 18.5 8 18.5z"></path>
+                    </svg>
+                    <svg id="share-icon" aria-label="Partager la publication" class="_8-yf5" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24">
+                        <line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="22" x2="9.218" y1="3" y2="10.083"></line>
+                        <polygon fill="none" points="11.698 20.334 23 3.729 9.197 10.083 7.302 20.334 11.698 20.334" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></polygon>
+                    </svg>
+                </div>
+            </div>
+            <div class="comments">
+                
+                <div class="comment">
+                    <strong>{{ comment.users }} liked your poste  </strong>
+                    
+                </div>
+                {% endif %}
+                
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endblock %}
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybBogGzA6Sn2U4l1vFRAUJZyxSBl2votv8ZeOPlFEL8zK5jxB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-qmFJD56ROcQHk6myMrp01IHlyy0zjLTTbrVZY5kDA6I7E2A39mC24l8jyw/uYMNS" crossorigin="anonymous"></script>
+</body>
+</html>

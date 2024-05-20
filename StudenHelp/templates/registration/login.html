@@ -1,0 +1,33 @@
+{% load crispy_forms_tags %} {% block content %}
+<head>
+    <link
+    rel="stylesheet"
+    type="text/css"
+    href="https://bootswatch.com/5/litera/bootstrap.min.css"
+    />
+    <style>
+    
+        .container{
+            width: 550px;
+            height: 100px;
+        }
+    </style>
+</head>
+<div class="container">
+  <h2>Se connecter</h2>
+
+    {% csrf_token %} 
+    {% crispy form %}
+    
+    <br />
+    <small>
+      Pas encore inscrit ?
+      <a href="{% url 'register' %}">S'inscrire</a>
+      <br />
+      Mot de passe oublié ?
+      <a href="{% url 'password_reset' %}">Renouveler mon mot de passe</a>
+    </small>
+  </form>
+</div>
+{% endblock %}
+

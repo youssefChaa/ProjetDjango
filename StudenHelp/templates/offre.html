@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <body>
+        <style>
+           .bienvenue-link {
+            color: white;
+            font-size: 22px;
+            font-family: sans-serif;
+        }
+        .dec{
+            font-size: 20px;
+            font-family: sans-serif;
+        }
+        .image {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end; 
+            margin-right: 20px;
+            
+        }
+        .image h3{
+            text-align: right;
+            text-align: right;
+            margin-bottom: 10px;
+            font-family: sans-serif;
+        }
+        .image img{
+            margin-top: 20px;
+            width: 60px;
+            border-radius: 50%;
+        }
+        .card-wrapper{
+            width: 550px;
+            margin:0px auto;
+            margin-left: 600px;
+            height: auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 40px;
+            border-radius: 20px;
+        }
+        .card{
+            padding: 10px;
+            height: 450px;
+        }
+        .objet1{
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .card-body img{
+            width: 100%;
+            height: 390px;
+        }
+        .icons{
+            margin-top: 10px;
+            margin-right: 20px;
+            display: flex;
+            flex-direction: row;
+            gap: 30px;
+        }
+        .sous-section{
+            width: 500px;
+            margin-right: 70px;
+            display: flex;
+            flex-direction: column;
+        }
+       .icon-send{
+        margin-left: 340px;
+       }
+       <!-- .comm {
+    width: 500px;
+    margin-top: 20px;
+   }
+   .comm img {
+    width: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+   }
+   #comi  {
+    width: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+   }
+   .comm a {
+    width: 250px;
+    border-radius: 50%;
+    list-style: none;
+    height: 40px;
+    text-decoration: none;
+    color: rgb(97, 89, 89);
+   }
+   #bb {
+    margin-top: 15px;
+    width: 250px;
+    border-radius: 50%;
+    list-style: none;
+    height: 40px;
+    text-decoration: none;
+    color: grey;
+   }
+   .ajc{
+    margin-top: 20px;
+   }
+h5{
+    margin-top: 20px;
+}
+.coma{
+    width: 200px;
+    height: 20px;
+    margin-bottom: 20px;
+}
+       
+</style>
+
+{% extends 'base.html' %}
+
+{% block content %}
+{% if user.is_authenticated %} 
+
+  
+<div class="image"> 
+
+    <img src="../../media/pdi.webp"> 
+    <h4>{{ user }}</h4> 
+        </div>
+        <div class="content">
+      
+            {% for post in posts %}
+            {% if post.type == 0 %}
+                <div class="card-wrapper">
+                    <div class="objet1">
+                        <h5 class="card-title"> {{ post.uc}} </h5>
+                        <p class="card-text">{{ post.date }} <p> offre </p></p>
+                    </div>
+                    {% if post.image %}
+                        <div class="card-body">
+                            <img src="/media/{{post.image}}" width="150px" height="120px">
+                        </div>
+                        {% endif %}
+                        <div class="sous-section">
+                            <div class="icons">
+                                <form method="post">
+                                <svg class="icon" aria-label="Je n'aime plus" class="x1lliihq x1n2onr6 xxk16z8" fill="currentColor" height="30" role="img" viewBox="0 0 48 48" width="30">
+                                    <title>Je n'aime plus</title>
+                                    <path d="M34.6 3.1c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5s1.1-.2 1.6-.5c1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z">
+                                    </path>
+                                </svg>  
+                            </form>
+                                <svg class="icon" aria-label="Commenter" class="x1lliihq x1n2onr6 x5n08af" fill="currentColor" height="30" role="img" viewBox="0 0 24 24" width="30">
+                                    <title>Commenter</title>
+                                    <path d="M20.656 17.008a9.993 9.993 0 1 0-3.59 3.615L22 22Z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2">
+                                    </path>
+                                </svg>  
+                                <svg class="icon-send" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
+                                    <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576zm6.787-8.201L1.591 6.602l4.339 2.76z"/>
+                                </svg>             
+                            </div>
+                        </div>
+                        {% for comment in post.comments.all %}
+                         <p>{% if not comment.like %} 0 {% else %}1{% endif %}<span> J'aime</span></p>
+                        {% endfor %}
+                        {% if post.recommandation %}
+                        <div class="sous-section">
+                            <p class="card-text">{{ post.recommandation.text }}</p>
+                        </div>
+                        {% elif post.transport %}
+                        <div class="sous-section">
+                        <p class="card-text">{{ post.transport.depart }}</p>                          
+                        <p class="card-text">{{ post.transport.destination }}</p>
+                        <p class="card-text">{{ post.transport.heure_dep }}</p>                      
+                        <p class="card-text">{{ post.transport.nbre_sieges }}</p>
+                        <p class="card-text">{{ post.transport.contactinfo }}</p>
+                        </div>
+                    {% elif post.logement %}
+                    <div class="sous-section"> 
+                        <p class="card-text" >Locaalisation : {{ post.logement.localisation }}</p>
+                        <p class="card-text">description : {{ post.logement.description }}</p>
+                        <p class="card-text">contactinfo : {{ post.logement.contactinfo }}</p>
+                    </div>
+                </div>
+                {% elif post.stage %}
+                <div class="sous-section">
+                    <p class="card-text" >{{ post.stage.specialite }} </p>
+                    <p class="card-text">
+                        {% if post.stage.typestg == 1 %}
+                            ouvrier
+                        {% elif post.stage.typestg == 2 %}
+                            technicien
+                        {% else %}
+                            PFE
+                        {% endif %}
+                    </p>
+                    <p class="card-text">{{ post.stage.societe }}</p>
+                    <p class="card-text">{{ post.stage.sujet }}</p>
+                    <p class="card-text">{{ post.stage.contactinfo }}</p>
+                    <p class="card-text">{{ post.stage.duree }}</p>
+                </div>
+                {% elif post.evenement  %}
+                <div class="sous-section">
+                    <p class="card-text" >{{ post.evenement.intitule }}  </p>
+                    <p class="card-text">{{ post.evenement.description }}</p>
+                    <p class="card-text">{{ post.evenement.lieu }}</p>
+                    <p class="card-text"> {{ post.evenement.contactinfo }}</p>
+                </div>
+                {% elif post.evenemnt.eventSocial %}
+                <div class="sous-section">
+                    <p class="card-text" >{{ evenemnt.eventSocial.intitule }}  </p>
+                    <p class="card-text">{{ evenemnt.eventSocial.description }}</p>
+                    <p class="card-text">{{ evenemnt.eventSocial.lieu }}</p>
+                    <p class="card-text">{{ evenemnt.eventSocial.prix }}  </p>
+                </div>
+                {% elif post.evenemnt.eventClub %}
+                <div class="sous-section">
+                    <p class="card-text" >Intitulé: {{ evenemnt.eventClub.intitule }}</p>
+                    <p class="card-text">intitule : {{ evenemnt.eventClub.intitule  }}</p>
+                    <p class="card-text">Lieu: {{ evenemnt.eventClub.lieu }}</p>
+                    <p class="card-text">Contact info: {{ evenemnt.eventClub.contactinfo }}</p>
+                    <p class="card-text">Club: {{ evenemnt.eventClub.club }}</p>
+                </div>
+                {% endif %}
+                <h5>Comments...</h5>
+                {% if not post.comments.all %}
+                <div class="ajc"> No Comments</div>
+                <div class="comm">
+                    <img src="../../media/pdi.webp" alt="">
+                     <a href="{% url 'add_comment' post.pk %}">Add comments</a>
+                </div>
+                {% else %} 
+                {% for comment in post.comments.all %}
+              
+                    <img id="comi" src="../../media/pdi.webp" alt=""> <strong>{{ comment.users }}</strong><br>
+                       <strong>{{ comment.comment }}</strong><br>
+                    {% endfor %}
+                    <a id="bb" href="{% url 'add_comment' post.pk %}">Add comments</a>
+
+            {% endif %} 
+                
+            </div>
+        </div>
+        
+        {% endif %}
+        {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,22 @@
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% block content %}
+<head>
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="https://bootswatch.com/5/litera/bootstrap.min.css"
+  />
+  <style>
+    .container {
+      /* margin-top: 40px; */
+      width: 400px;
+      margin: 0 auto;
+      color: rgb(215, 49, 30);
+    }
+  </style>
+</head>
+<div class="container">
+  <h2>Create Post</h2>
+
+  {% csrf_token %} {% crispy form %}
+</div>
+{% endblock %}

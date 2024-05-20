@@ -1,0 +1,302 @@
+
+<!DOCTYPE html>
+<html lang="en">
+   
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    </head>
+    <style>
+        .profile {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: row;
+                text-align: center;
+                width: 600px;
+                margin: 0 auto;
+                margin-top: 30px;
+                
+            }
+            .profile img {
+                border-radius: 50%;
+                margin-right: 100px;
+                width: 220px;
+            }
+            body {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                height: 100vh;
+                margin: 0;
+            }
+            .profile p {
+                font-size: 20px;
+                font-family: sans-serif;
+            }
+            input[type="file"] {
+                display: none;
+            }
+            .custom-file-upload {
+                border: 1px solid #ccc;
+                display: inline-block;
+                padding: 6px 12px;
+                cursor: pointer;
+            }
+            button{
+                margin-left: 80px;
+                width: 120px;
+                height: 40px;
+                margin-right: 16px;
+            }
+            .element{
+                display: flex;
+                
+            }
+            .objet1{
+                display: flex;
+            }
+            .nom{
+                width: 200px;
+                flex-direction: column;
+                display: flex;
+                text-align: left;
+            }
+            #comi  {
+    width: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+   }
+   #bb {
+    margin-top: 15px;
+    width: 250px;
+    border-radius: 50%;
+    list-style: none;
+    height: 40px;
+    text-decoration: none;
+    color: grey;
+   }
+            .content{
+                display: flex;
+                flex-direction: column;
+                width: 750px;
+                margin: 0 auto;
+                margin-right: 200px;
+                margin-bottom: 50px;
+                background-color: #fff;
+           
+            }
+            .icons{
+                margin-top: 10px;
+                margin-right: 20px;
+                display: flex;
+                flex-direction: row;
+                gap: 30px;
+            }
+            .card-body img{
+                margin-top: 20px;
+                width: 450px;
+                height: 350px;
+            }
+            .objet1 svg{
+                margin-left: 260px;
+            }
+            svg:hover{
+                cursor: pointer;
+            }
+            .sup{
+                color: red;
+                text-decoration: none; 
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-size: 18px;
+            }
+    
+            .mod{
+                text-decoration: none;
+                color: rgb(73, 67, 67);
+                font-size: 18px;
+            }
+            .but{
+                display: flex;
+                flex-direction: column;
+            }
+            .new-post {
+                display: flex;
+                flex-direction: column;
+                width: auto;
+                margin: 0 auto;
+                margin-right: 200px;
+                margin-bottom: 50px;
+                height: auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 40px;
+            border-radius: 20px;
+    }
+    .svgs{
+        padding: 5px
+    }
+    </style>
+    
+        <body>
+       
+            {% extends 'base.html' %}
+            {% load static %}
+            {% block content %}
+            <div class="profile">
+                <img src="../../media/pdi.webp" alt="">
+                <input type="file" id="profile-image">  
+                 {% if user.is_authenticated %}
+                 <div class="element">
+                    <div class="nom">
+                        <p>{{ user }}</p>
+                        <p>nom et prenom </p> 
+                    </div>
+                     <!-- <p> Post : <span id="postCount">X</span></p> -->
+                     <button type="button" class="btn btn-secondary">Edit Profil</button>
+                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-gear" viewBox="0 0 16 16">
+                         <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0"/>
+                         <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z"/>
+                        </svg>
+                 </div>
+            </div>
+            <hr>
+                        <div class="content">
+                            {% for post in posts %}
+                            {% if post.uc == request.user %}
+                                <div class="card-wrappe new-post">
+                                    <div class="objet1">
+                                        <h5 class="card-title"> {{ post.uc}} </h5>
+                                        <p class="card-text">{{ post.date }} <p>{% if post.type == 1 %} demmande {% else %} offre {% endif %}</p></p>
+                                         
+                                    </div>
+                                    {% if post.image %}
+                                        <div class="card-body">
+                                            <img  src="/media/{{post.image}}" width="150px" height="120px">
+                                        </div>
+                                        {% endif %}
+                                            
+                                        <div class="sous-section">
+                                            <div class="icons">
+                                                <svg onclick="test()" class="icon" aria-label="Je n'aime plus" class="x1lliihq x1n2onr6 xxk16z8" fill="currentColor" height="30" role="img" viewBox="0 0 48 48" width="30">
+                                                    <title>Je n'aime plus</title>
+                                                    <path d="M34.6 3.1c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5s1.1-.2 1.6-.5c1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z">
+                                                    </path>
+                                                </svg>  
+                                                <svg class="icon" aria-label="Commenter" class="x1lliihq x1n2onr6 x5n08af" fill="currentColor" height="30" role="img" viewBox="0 0 24 24" width="30">
+                                                    <title>Commenter</title>
+                                                    <path d="M20.656 17.008a9.993 9.993 0 1 0-3.59 3.615L22 22Z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2">
+                                                    </path>
+                                                </svg>  
+                                                             
+                                            </div>
+                                        </div>
+                                        <p>NB <span>J'aime</span></p>
+                                        {% if post.recommandation %}
+                                        <div class="sous-section">
+                                            <p class="card-text">{{ post.recommandation.text }}</p>    
+                                            <div class="but">
+                                                <a class="mod" id="mod" href="{% url 'modifier_Recommandation' post.pk %}">modifier</a>
+                                                <a class="sup" id="sup" href="{% url 'supprimer_Recommandation' post.pk %}">supprimer</a>
+                                            </div>
+                                        </div>
+                                        {% elif post.transport %}
+                                        <div class="sous-section">
+                                        <p class="card-text">{{ post.transport.depart }}</p>                          
+                                        <p class="card-text">{{ post.transport.destination }}</p>
+                                        <p class="card-text">{{ post.transport.heure_dep }}</p>                      
+                                        <p class="card-text">{{ post.transport.nbre_sieges }}</p>
+                                        <p class="card-text">{{ post.transport.contactinfo }}</p>
+                                        <div class="but">
+                                            <a class="mod" id="mod" href="{% url 'modifier_Transport' post.pk %}">modifier</a>
+                                            <a class="sup" id="sup" href="{% url 'supprimer_Transport' post.pk %}">supprimer</a>
+                                        </div>
+                                        </div>
+                                    {% elif post.logement %}
+                                    <div class="sous-section"> 
+                                        <p class="card-text" >Locaalisation : {{ post.logement.localisation }}</p>
+                                        <p class="card-text">description : {{ post.logement.description }}</p>
+                                        <p class="card-text">contactinfo : {{ post.logement.contactinfo }}</p>
+                                        <div class="but">
+                                            <a class="mod" id="mod" href="{% url 'modifier_Recommandation' post.pk %}">modifier</a>
+                                            <a class="sup" id="sup" href="{% url 'supprimer_Recommandation' post.pk %}">supprimer</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% elif post.stage %}
+                                <div class="sous-section">
+                                    <p class="card-text" >{{ post.stage.specialite }} </p>
+                                    <p class="card-text">{{ post.stage.typestg }}</p>
+                                    <p class="card-text">{{ post.stage.societe }}</p>
+                                    <p class="card-text">{{ post.stage.sujet }}</p>
+                                    <p class="card-text">{{ post.stage.contactinfo }}</p>
+                                    <p class="card-text">{{ post.stage.duree }}</p>
+                                    <div class="but">
+                                        <a class="mod" id="mod" href="{% url 'modifier_Stage' post.pk %}">modifier</a>
+                                        <a class="sup" id="sup" href="{% url 'supprimer_Stage' post.pk %}">supprimer</a>
+                                    </div>
+                                </div>
+                                {% elif post.evenement  %}
+                                <div class="sous-section">
+                                    <p class="card-text" >{{ post.evenement.intitule }}  </p>
+                                    <p class="card-text">{{ post.evenement.description }}</p>
+                                    <p class="card-text">{{ post.evenement.lieu }}</p>
+                                    <p class="card-text"> {{ post.evenement.contactinfo }}</p>
+                                    <div class="but">
+                                        <a class="mod" id="mod" href="{% url 'modifier_Evenement' post.pk %}">modifier</a>
+                                        <a class="sup" id="sup" href="{% url 'supprimer_Evenement' post.pk %}">supprimer</a>
+                                    </div>
+                                </div>
+                                {% elif post.evenemnt.eventSocial %}
+                                <div class="sous-section">
+                                    <p class="card-text" >{{ evenemnt.eventSocial.intitule }}  </p>
+                                    <p class="card-text">{{ evenemnt.eventSocial.description }}</p>
+                                    <p class="card-text">{{ evenemnt.eventSocial.lieu }}</p>
+                                    <p class="card-text">{{ evenemnt.eventSocial.prix }}  </p>
+                                    <div class="but">
+                                        <a class="mod" id="mod" href="{% url 'modifier_EventSocial' post.pk %}">modifier</a>
+                                        <a class="sup" id="sup" href="{% url 'supprimer_EventSocial' post.pk %}">supprimer</a>
+                                    </div>
+                                </div>
+                                {% elif post.evenemnt.eventClub %}
+                                <div class="sous-section">
+                                    <p class="card-text" >Intitulé: {{ evenemnt.eventClub.intitule }}</p>
+                                    <p class="card-text">intitule : {{ evenemnt.eventClub.intitule  }}</p>
+                                    <p class="card-text">Lieu: {{ evenemnt.eventClub.lieu }}</p>
+                                    <p class="card-text">Contact info: {{ evenemnt.eventClub.contactinfo }}</p>
+                                    <p class="card-text">Club: {{ evenemnt.eventClub.club }}</p>
+                                    <div class="but">
+                                        <a class="mod" id="mod" href="{% url 'modifier_EventClub' post.pk %}">modifier</a>
+                                        <a class="sup" id="sup" href="{% url 'supprimer_EventClub' post.pk %}">supprimer</a>
+                                    </div>
+                                </div>
+                                {% endif %}
+                                <h5>Comments...</h5>
+            {% if not post.comments.all %}
+            <div class="ajc"> No Comments</div>
+            <div class="comm">
+                <img src="../../media/pdi.webp" alt="">
+                 <a href="{% url 'add_comment' post.pk %}">Add comments</a>
+            </div>
+            
+
+                        {% endif %} 
+                            </div>
+                        {% endif %}
+                        {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+                </div>
+               
+            {% endblock %}
+           
+            
+        </body>
+        
+    
+    </html>
